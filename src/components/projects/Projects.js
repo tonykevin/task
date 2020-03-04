@@ -1,6 +1,6 @@
 import React from 'react'
 import { PageHeader, Sidebar } from '../layout'
-import { TaskForm } from '../tasks'
+import { TaskForm, TaskList } from '../tasks'
 
 const Projects = () => {
   return (
@@ -11,9 +11,10 @@ const Projects = () => {
         <main>
           <TaskForm />
           <div className='container-tasks'>
+            <TaskList />
           </div>
         </main>
-    </div>
+      </div>
     </div>
   )
 }

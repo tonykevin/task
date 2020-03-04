@@ -94,6 +94,11 @@ a {
   background-color: transparent;
 }
 
+.btn-remove {
+  background-color: var(--white);
+  color: var(--gray2);
+}
+
 @media (min-width: 768px) {
   .container-app {
       display: flex;
