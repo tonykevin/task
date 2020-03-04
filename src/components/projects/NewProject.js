@@ -1,6 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const NewProject = () => {
+  const [project, setProject] = useState({
+    name: ''
+  })
+
+  const { name } = project
+
+  const defineData = ({ target }) => {
+    setProject({
+      ...project,
+      [target.name]: target.value
+    })
+  }
+
+  const onSubmit = e => {
+    e.preventDefault()
+  }
+
   return (
     <>
       <button
@@ -11,12 +28,15 @@ const NewProject = () => {
       </button>
       <form
         className='form-new-project'
+        onSubmit={onSubmit}
       >
         <input
-          type='text'
           className='input-text'
-          placeholder='Nombre del proyecto'
           name='name'
+          onChange={defineData}
+          placeholder='Nombre del proyecto'
+          type='text'
+          value={name}
         />
         <button
           type='submit'
