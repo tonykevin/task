@@ -1,7 +1,18 @@
 import React from 'react'
+import { Sidebar } from '../layout'
 
-const Projects = () => (
-  <h1>Proyectos</h1>
-)
+const Projects = () => {
+  return (
+    <div className='container-app'>
+      <Sidebar />
+      <div className='section-mainf'>
+        <main>
+          <div className='container-tasks'>
+          </div>
+        </main>
+    </div>
+    </div>
+  )
+}
 
 export default Projects
