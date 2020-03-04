@@ -1,11 +1,12 @@
 import React from 'react'
-import { Sidebar } from '../layout'
+import { PageHeader, Sidebar } from '../layout'
 
 const Projects = () => {
   return (
     <div className='container-app'>
       <Sidebar />
-      <div className='section-mainf'>
+      <div className='section-main'>
+        <PageHeader />
         <main>
           <div className='container-tasks'>
           </div>
