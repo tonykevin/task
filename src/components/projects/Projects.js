@@ -1,5 +1,6 @@
 import React from 'react'
 import { PageHeader, Sidebar } from '../layout'
+import { TaskForm } from '../tasks'
 
 const Projects = () => {
   return (
@@ -8,6 +9,7 @@ const Projects = () => {
       <div className='section-main'>
         <PageHeader />
         <main>
+          <TaskForm />
           <div className='container-tasks'>
           </div>
         </main>
