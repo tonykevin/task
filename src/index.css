@@ -177,6 +177,7 @@ aside  {
   margin-bottom: 1rem;
   color: var(--white);
 }
+
 .input-text {
   padding: 1rem;
   border: none;
@@ -319,6 +320,11 @@ aside  {
   flex: 0 0 100px;
   font-family: var(--textFont);
 }
+
+.form-field label::after {
+  content: ':'
+}
+
 .form-field input[type="password"],
 .form-field input[type="email"],
 .form-field input[type="text"] {
