@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { projectContext } from '../../context/projects'
 
 const ProjectForm = () => {
-  const { form } = useContext(projectContext)
+  const { form, showForm } = useContext(projectContext)
 
   const [project, setProject] = useState({
     name: ''
@@ -21,11 +21,15 @@ const ProjectForm = () => {
     e.preventDefault()
   }
 
+  // Show project form
+  const onClick = () => showForm()
+
   return (
     <>
       <button
         type='button'
         className='btn btn-block btn-primary'
+        onClick={onClick}
       >
         Nuevo proyecto
       </button>
