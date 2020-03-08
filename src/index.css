@@ -131,6 +131,7 @@ aside  {
 }
 .form-new-project .input-text::placeholder{
   color: var(--gray2);
+  font-style: italic;
 }
 .projects {
   margin-top: 10rem;

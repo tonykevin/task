@@ -1,10 +1,14 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { projectContext } from '../../context/projects'
 import Project from './Project'
 
 const ProjectList = () => {
   // Extract projects from the initial state
-  const { projects } = useContext(projectContext)
+  const { projects, getProjects } = useContext(projectContext)
+
+  useEffect(() => {
+    getProjects()
+  }, [])
 
   if (projects.length === 0) return null
 
