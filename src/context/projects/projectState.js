@@ -6,12 +6,17 @@ import { PROJECT_FORM } from '../../types'
 
 const ProjectState = props => {
   const initialState = {
-    form: false
+    form: false,
+    projects: [
+      { id: 1, name: 'tienda virtual' },
+      { id: 2, name: 'intranet' },
+      { id: 3, name: 'Diseño de sitio web' }
+    ]
   }
 
   // Actions dispatch
   const [state, dispatch] = useReducer(projectReducer, initialState)
-  const { form } = state
+  const { form, projects } = state
 
   // Functions for CRUD
   const showForm = () => {
@@ -24,6 +29,7 @@ const ProjectState = props => {
     <projectContext.Provider
       value={{
         form,
+        projects,
         showForm
       }}
     >
