@@ -6,7 +6,8 @@ import projectReducer from './projectReducer'
 import {
   ADD_PROJECT,
   GET_PROJECTS,
-  PROJECT_FORM
+  PROJECT_FORM,
+  VALIDATE_FORM
 } from '../../types'
 
 const ProjectState = props => {
@@ -18,12 +19,13 @@ const ProjectState = props => {
 
   const initialState = {
     form: false,
+    formError: false,
     projects: []
   }
 
   // Actions dispatch
   const [state, dispatch] = useReducer(projectReducer, initialState)
-  const { form, projects } = state
+  const { form, formError, projects } = state
 
   // Functions for CRUD
   const showForm = () => {
@@ -49,13 +51,22 @@ const ProjectState = props => {
     })
   }
 
+  // validate form
+  const showError = () => {
+    dispatch({
+      type: VALIDATE_FORM
+    })
+  }
+
   return (
     <projectContext.Provider
       value={{
         form,
+        formError,
         projects,
         addProject,
         getProjects,
+        showError,
         showForm
       }}
     >

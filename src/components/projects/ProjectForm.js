@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { projectContext } from '../../context/projects'
 
 const ProjectForm = () => {
-  const { form, showForm, addProject } = useContext(projectContext)
+  const { form, formError, showForm, addProject, showError } = useContext(projectContext)
 
   const [project, setProject] = useState({
     name: ''
@@ -21,7 +21,10 @@ const ProjectForm = () => {
     e.preventDefault()
 
     // validate project data
-    if (name === '') { return null }
+    if (name === '') {
+      showError()
+      return
+    }
 
     addProject(project)
 
@@ -65,6 +68,11 @@ const ProjectForm = () => {
               </button>
             </form>
           )
+          : null
+      }
+      {
+        formError
+          ? <p className='message error'>El nombre es obligatiorio.</p>
           : null
       }
     </>

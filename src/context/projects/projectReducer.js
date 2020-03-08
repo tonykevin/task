@@ -1,7 +1,8 @@
 import {
   ADD_PROJECT,
   GET_PROJECTS,
-  PROJECT_FORM
+  PROJECT_FORM,
+  VALIDATE_FORM
 } from '../../types'
 
 export default (state, action) => {
@@ -10,7 +11,8 @@ export default (state, action) => {
       return {
         ...state,
         projects: [...state.projects, action.payload],
-        form: false
+        form: false,
+        formError: false
       }
     case GET_PROJECTS:
       return {
@@ -22,6 +24,12 @@ export default (state, action) => {
       return {
         ...state,
         form: true
+      }
+
+    case VALIDATE_FORM:
+      return {
+        ...state,
+        formError: true
       }
 
     default:
