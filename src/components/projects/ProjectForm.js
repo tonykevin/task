@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { projectContext } from '../../context/projects'
 
 const ProjectForm = () => {
-  const { form, showForm } = useContext(projectContext)
+  const { form, showForm, addProject } = useContext(projectContext)
 
   const [project, setProject] = useState({
     name: ''
@@ -19,6 +19,15 @@ const ProjectForm = () => {
 
   const onSubmit = e => {
     e.preventDefault()
+
+    // validate project data
+    if (name === '') { return null }
+
+    addProject(project)
+
+    setProject({
+      name: ''
+    })
   }
 
   // Show project form
