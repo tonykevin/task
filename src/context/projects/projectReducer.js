@@ -20,7 +20,7 @@ export default (state, action) => {
         ...state,
         project: state.projects.filter(
           project => project.id === action.payload
-        )
+        )[0]
       }
     case GET_PROJECTS:
       return {
