@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
 
 import { projectContext } from '../../context/projects'
+import { taskContext } from '../../context/tasks'
 import Task from './Task'
 
 const TaskList = () => {
   const { project, deleteProject } = useContext(projectContext)
+  const { projectTasks } = useContext(taskContext)
   if (!project) { return <h2>Selecciona un proyecto</h2> }
-
-  const tasks = []
 
   // Delete a project
   const onClickDelete = () => {
@@ -19,15 +19,15 @@ const TaskList = () => {
       <h2>Proyecto: {project.name}</h2>
       <ul className='task-list'>
         {
-          tasks.length === 0
+          projectTasks.length === 0
             ? (
               <li className='task'><p>No hay tareas</p></li>
             )
             : (
-              tasks.map(({ id, name, state }) => (
+              projectTasks.map(({ id, name, state }) => (
                 <Task
-                  id={id}
                   key={id}
+                  id={id}
                   name={name}
                   state={state}
                 />

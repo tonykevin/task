@@ -10,24 +10,23 @@ import {
 const TaskState = props => {
   const initialState = {
     tasks: [
-      { name: 'Elegir plataforma', state: true, projectId: 1 },
-      { name: 'Elegir colores', state: false, projectId: 2 },
-      { name: 'Elegir plataforma de pago', state: false, projectId: 3 },
-      { name: 'Elegir Hosting', state: true, projectId: 2 },
-      { name: 'Elegir plataforma de pago', state: true, projectId: 2 },
-      { name: 'Elegir colores', state: false, projectId: 3 },
-      { name: 'Elegir Hosting', state: true, projectId: 1 },
-      { name: 'Comprar dominio', state: false, projectId: 3 },
-      { name: 'Comprar dominio', state: true, projectId: 1 },
-      { name: 'Diseñar logo', state: false, projectId: 1 },
-      { name: 'Diseñar logo', state: true, projectId: 2 },
-      { name: 'Diseñar logo', state: false, projectId: 3 },
-      { name: 'Eligir gestor de DB', state: false, projectId: 3 }
-    ]
+      { id: 0, name: 'Elegir colores', state: false, projectId: 2 },
+      { id: 1, name: 'Elegir plataforma de pago', state: false, projectId: 3 },
+      { id: 2, name: 'Elegir Hosting', state: true, projectId: 2 },
+      { id: 3, name: 'Elegir plataforma de pago', state: true, projectId: 2 },
+      { id: 4, name: 'Elegir colores', state: false, projectId: 3 },
+      { id: 5, name: 'Elegir Hosting', state: true, projectId: 1 },
+      { id: 6, name: 'Comprar dominio', state: false, projectId: 3 },
+      { id: 7, name: 'Comprar dominio', state: true, projectId: 1 },
+      { id: 8, name: 'Diseñar logo', state: true, projectId: 2 },
+      { id: 9, name: 'Diseñar logo', state: false, projectId: 3 },
+      { id: 10, name: 'Eligir gestor de DB', state: false, projectId: 3 }
+    ],
+    projectTasks: null
   }
 
   const [state, dispatch] = useReducer(TaskReducer, initialState)
-  const { tasks } = state
+  const { projectTasks, tasks } = state
 
   // Create functions
 
@@ -42,6 +41,7 @@ const TaskState = props => {
   return (
     <taskContext.Provider
       value={{
+        projectTasks,
         tasks,
         getTasks
       }}
