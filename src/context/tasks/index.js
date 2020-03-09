@@ -1,7 +1,7 @@
-import TaskContext from './TaskContext'
+import taskContext from './taskContext'
 import TaskState from './TaskState'
 
 export {
-  TaskContext,
+  taskContext,
   TaskState
 }
