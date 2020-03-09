@@ -1,20 +1,51 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { projectContext } from '../../context/projects'
+import { taskContext } from '../../context/tasks'
 
 const TaskForm = () => {
   const { project } = useContext(projectContext)
+  const { addTask } = useContext(taskContext)
+
+  const [task, setTask] = useState({
+    name: ''
+  })
+
+  const { name } = task
+
   if (!project) { return null }
+
+  const defineData = ({ target }) => {
+    console.log(target)
+    setTask({
+      ...task,
+      [target.name]: target.value
+    })
+  }
+
+  const onSubmit = e => {
+    e.preventDefault()
+    // Validate a task
+
+    // Add a task
+    task.projectId = project.id
+    task.state = false
+    addTask(task)
+  }
 
   return (
     <div className='form'>
-      <form>
+      <form
+        onSubmit={onSubmit}
+      >
         <div className='container-input'>
           <input
             className='input-text'
             name='name'
+            onChange={defineData}
             placeholder='Nombre de tarea'
             type='text'
+            value={name}
           />
         </div>
 
