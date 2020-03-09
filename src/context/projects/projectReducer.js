@@ -1,5 +1,6 @@
 import {
   ADD_PROJECT,
+  CURRENT_PROJECT,
   GET_PROJECTS,
   PROJECT_FORM,
   VALIDATE_FORM
@@ -13,6 +14,13 @@ export default (state, action) => {
         projects: [...state.projects, action.payload],
         form: false,
         formError: false
+      }
+    case CURRENT_PROJECT:
+      return {
+        ...state,
+        project: state.projects.filter(
+          project => project.id === action.payload
+        )
       }
     case GET_PROJECTS:
       return {

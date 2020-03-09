@@ -17,6 +17,7 @@ const ProjectList = () => {
       {projects.map(({ id, name }) => (
         <Project
           key={id}
+          id={id}
           name={name}
         />
       ))}

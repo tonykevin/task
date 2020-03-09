@@ -5,6 +5,7 @@ import projectContext from './projectContext'
 import projectReducer from './projectReducer'
 import {
   ADD_PROJECT,
+  CURRENT_PROJECT,
   GET_PROJECTS,
   PROJECT_FORM,
   VALIDATE_FORM
@@ -20,12 +21,13 @@ const ProjectState = props => {
   const initialState = {
     form: false,
     formError: false,
-    projects: []
+    projects: [],
+    project: null
   }
 
   // Actions dispatch
   const [state, dispatch] = useReducer(projectReducer, initialState)
-  const { form, formError, projects } = state
+  const { form, formError, projects, project } = state
 
   // Functions for CRUD
   const showForm = () => {
@@ -58,13 +60,23 @@ const ProjectState = props => {
     })
   }
 
+  // Select a project
+  const currentProject = projectId => {
+    dispatch({
+      type: CURRENT_PROJECT,
+      payload: projectId
+    })
+  }
+
   return (
     <projectContext.Provider
       value={{
         form,
         formError,
         projects,
+        project,
         addProject,
+        currentProject,
         getProjects,
         showError,
         showForm
