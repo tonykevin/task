@@ -6,6 +6,7 @@ import projectReducer from './projectReducer'
 import {
   ADD_PROJECT,
   CURRENT_PROJECT,
+  DELETE_PROJECT,
   GET_PROJECTS,
   PROJECT_FORM,
   VALIDATE_FORM
@@ -68,6 +69,14 @@ const ProjectState = props => {
     })
   }
 
+  // Delete a project
+  const deleteProject = projectId => {
+    dispatch({
+      type: DELETE_PROJECT,
+      payload: projectId
+    })
+  }
+
   return (
     <projectContext.Provider
       value={{
@@ -77,6 +86,7 @@ const ProjectState = props => {
         project,
         addProject,
         currentProject,
+        deleteProject,
         getProjects,
         showError,
         showForm

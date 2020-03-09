@@ -10,7 +10,9 @@ const ProjectList = () => {
     getProjects()
   }, [])
 
-  if (projects.length === 0) return null
+  if (projects.length === 0) {
+    return <p>No hay proyectos, comienza a crear uno</p>
+  }
 
   return (
     <ul className='project-list'>
