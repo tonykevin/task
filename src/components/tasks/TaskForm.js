@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { projectContext } from '../../context/projects'
 import { taskContext } from '../../context/tasks'
@@ -16,7 +17,6 @@ const TaskForm = () => {
   if (!project) { return null }
 
   const defineData = ({ target }) => {
-    console.log(target)
     setTask({
       ...task,
       [target.name]: target.value
@@ -32,6 +32,7 @@ const TaskForm = () => {
     }
 
     // Add a task
+    task.id = uuidv4()
     task.projectId = project.id
     task.state = false
     addTask(task)
