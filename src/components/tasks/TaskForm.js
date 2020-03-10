@@ -5,7 +5,7 @@ import { taskContext } from '../../context/tasks'
 
 const TaskForm = () => {
   const { project } = useContext(projectContext)
-  const { addTask } = useContext(taskContext)
+  const { addTask, taskError, validateTask } = useContext(taskContext)
 
   const [task, setTask] = useState({
     name: ''
@@ -26,11 +26,20 @@ const TaskForm = () => {
   const onSubmit = e => {
     e.preventDefault()
     // Validate a task
+    if (name.trim() === '') {
+      validateTask()
+      return
+    }
 
     // Add a task
     task.projectId = project.id
     task.state = false
     addTask(task)
+
+    // Reset form
+    setTask({
+      name: ''
+    })
   }
 
   return (
@@ -58,6 +67,11 @@ const TaskForm = () => {
           </button>
         </div>
       </form>
+      {
+        taskError
+          ? <p className='message error'>El nombre de la tarea es requerido</p>
+          : null
+      }
     </div>
   )
 }

@@ -9,6 +9,7 @@ export default (state, action) => {
     case ADD_TASK:
       return {
         ...state,
+        taskError: false,
         tasks: [...state.tasks, action.payload]
       }
     case PROJECT_TASKS:
