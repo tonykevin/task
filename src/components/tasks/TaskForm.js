@@ -5,7 +5,7 @@ import { taskContext } from '../../context/tasks'
 
 const TaskForm = () => {
   const { project } = useContext(projectContext)
-  const { addTask, taskError, validateTask } = useContext(taskContext)
+  const { addTask, getTasks, taskError, validateTask } = useContext(taskContext)
 
   const [task, setTask] = useState({
     name: ''
@@ -35,6 +35,9 @@ const TaskForm = () => {
     task.projectId = project.id
     task.state = false
     addTask(task)
+
+    // Get and filter current project tasks
+    getTasks(project.id)
 
     // Reset form
     setTask({
