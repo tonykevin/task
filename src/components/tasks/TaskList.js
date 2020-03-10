@@ -6,12 +6,14 @@ import Task from './Task'
 
 const TaskList = () => {
   const { project, deleteProject } = useContext(projectContext)
-  const { projectTasks } = useContext(taskContext)
+  const { getTasks, projectTasks, deleteTaskByProject } = useContext(taskContext)
   if (!project) { return <h2>Selecciona un proyecto</h2> }
 
   // Delete a project
-  const onClickDelete = () => {
+  const handleDelete = () => {
     deleteProject(project.id)
+    deleteTaskByProject(project.id)
+    getTasks(project.id)
   }
 
   return (
@@ -38,7 +40,7 @@ const TaskList = () => {
       <button
         className='btn btn-remove'
         type='button'
-        onClick={onClickDelete}
+        onClick={handleDelete}
       >
         Eliminar proyecto &times;
       </button>
