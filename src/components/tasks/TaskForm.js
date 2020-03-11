@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { projectContext } from '../../context/projects'
@@ -6,7 +6,17 @@ import { taskContext } from '../../context/tasks'
 
 const TaskForm = () => {
   const { project } = useContext(projectContext)
-  const { addTask, getTasks, taskError, validateTask } = useContext(taskContext)
+  const { addTask, currentTask, getTasks, taskError, validateTask } = useContext(taskContext)
+
+  useEffect(() => {
+    if (currentTask) {
+      setTask(currentTask)
+    } else {
+      setTask({
+        name: ''
+      })
+    }
+  }, [currentTask])
 
   const [task, setTask] = useState({
     name: ''
@@ -67,7 +77,7 @@ const TaskForm = () => {
             className='btn btn-primary btn-submit btn-block'
             type='submit'
           >
-            Agregar tarea
+            {currentTask ? 'Editar tarea' : 'Agregar tarea'}
           </button>
         </div>
       </form>
