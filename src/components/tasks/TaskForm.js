@@ -6,7 +6,14 @@ import { taskContext } from '../../context/tasks'
 
 const TaskForm = () => {
   const { project } = useContext(projectContext)
-  const { addTask, currentTask, getTasks, taskError, validateTask } = useContext(taskContext)
+  const {
+    addTask,
+    currentTask,
+    getTasks,
+    taskError,
+    updateTask,
+    validateTask
+  } = useContext(taskContext)
 
   useEffect(() => {
     if (currentTask) {
@@ -41,11 +48,16 @@ const TaskForm = () => {
       return
     }
 
-    // Add a task
-    task.id = uuidv4()
-    task.projectId = project.id
-    task.state = false
-    addTask(task)
+    if (!currentTask) {
+      // Add a task
+      task.id = uuidv4()
+      task.projectId = project.id
+      task.state = false
+      addTask(task)
+    } else {
+      // Update a task
+      updateTask(task)
+    }
 
     // Get and filter current project tasks
     getTasks(project.id)
