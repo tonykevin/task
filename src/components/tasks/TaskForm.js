@@ -10,6 +10,7 @@ const TaskForm = () => {
     addTask,
     currentTask,
     getTasks,
+    initializeTask,
     taskError,
     updateTask,
     validateTask
@@ -57,6 +58,9 @@ const TaskForm = () => {
     } else {
       // Update a task
       updateTask(task)
+
+      // Clean the form
+      initializeTask()
     }
 
     // Get and filter current project tasks

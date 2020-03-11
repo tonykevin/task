@@ -8,6 +8,7 @@ import {
   CURRENT_TASK,
   DELETE_TASK,
   DELETE_TASK_BY_PROJECT,
+  INITIALIZE_TASK,
   PROJECT_TASKS,
   TASK_STATE,
   UPDATE_TASK,
@@ -102,6 +103,13 @@ const TaskState = props => {
     })
   }
 
+  // Initialize task
+  const initializeTask = () => {
+    dispatch({
+      type: INITIALIZE_TASK
+    })
+  }
+
   return (
     <taskContext.Provider
       value={{
@@ -115,6 +123,7 @@ const TaskState = props => {
         deleteTaskByProject,
         getCurrentTask,
         getTasks,
+        initializeTask,
         updateTask,
         validateTask
       }}

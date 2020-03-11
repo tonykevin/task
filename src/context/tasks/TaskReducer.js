@@ -3,6 +3,7 @@ import {
   CURRENT_TASK,
   DELETE_TASK,
   DELETE_TASK_BY_PROJECT,
+  INITIALIZE_TASK,
   PROJECT_TASKS,
   TASK_STATE,
   UPDATE_TASK,
@@ -36,6 +37,13 @@ export default (state, action) => {
           task => task.projectId !== action.payload
         )
       }
+
+    case INITIALIZE_TASK:
+      return {
+        ...state,
+        currentTask: null
+      }
+
     case PROJECT_TASKS:
       return {
         ...state,
