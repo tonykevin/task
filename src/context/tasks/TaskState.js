@@ -5,6 +5,7 @@ import TaskReducer from './TaskReducer'
 
 import {
   ADD_TASK,
+  CURRENT_TASK,
   DELETE_TASK,
   DELETE_TASK_BY_PROJECT,
   PROJECT_TASKS,
@@ -27,12 +28,13 @@ const TaskState = props => {
       { id: 9, name: 'Diseñar logo', state: false, projectId: 3 },
       { id: 10, name: 'Eligir gestor de DB', state: false, projectId: 3 }
     ],
+    currentTask: null,
     projectTasks: null,
     taskError: false
   }
 
   const [state, dispatch] = useReducer(TaskReducer, initialState)
-  const { projectTasks, tasks, taskError } = state
+  const { currentTask, projectTasks, tasks, taskError } = state
 
   // Create functions
 
@@ -83,9 +85,18 @@ const TaskState = props => {
     })
   }
 
+  // Get current task
+  const getCurrentTask = task => {
+    dispatch({
+      type: CURRENT_TASK,
+      payload: task
+    })
+  }
+
   return (
     <taskContext.Provider
       value={{
+        currentTask,
         projectTasks,
         tasks,
         taskError,
@@ -93,6 +104,7 @@ const TaskState = props => {
         ChangeTaskState,
         deleteTask,
         deleteTaskByProject,
+        getCurrentTask,
         getTasks,
         validateTask
       }}

@@ -1,5 +1,6 @@
 import {
   ADD_TASK,
+  CURRENT_TASK,
   DELETE_TASK,
   DELETE_TASK_BY_PROJECT,
   PROJECT_TASKS,
@@ -14,6 +15,11 @@ export default (state, action) => {
         ...state,
         taskError: false,
         tasks: [action.payload, ...state.tasks]
+      }
+    case CURRENT_TASK:
+      return {
+        ...state,
+        currentTask: action.payload
       }
     case DELETE_TASK:
       return {

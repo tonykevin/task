@@ -3,10 +3,14 @@ import { taskContext } from '../../context/tasks'
 import { projectContext } from '../../context/projects'
 
 const Task = ({ task }) => {
-  const { deleteTask, getTasks, ChangeTaskState } = useContext(taskContext)
+  const { deleteTask, getCurrentTask, getTasks, ChangeTaskState } = useContext(taskContext)
   const { project } = useContext(projectContext)
 
   const { id, name, state } = task
+
+  const handleEdit = task => {
+    getCurrentTask(task)
+  }
 
   const handleDelete = taskId => {
     deleteTask(taskId)
@@ -51,11 +55,17 @@ const Task = ({ task }) => {
         }
       </div>
       <div className='actions'>
-        <button className='btn btn-primary' type='button'>Editar</button>
+        <button
+          className='btn btn-primary'
+          onClick={() => handleEdit(task)}
+          type='button'
+        >
+          Editar
+        </button>
         <button
           className='btn btn-secondary'
-          type='button'
           onClick={() => handleDelete(id)}
+          type='button'
         >
           Eliminar
         </button>
