@@ -14,3 +14,6 @@ export const TASK_STATE = 'TASK_STATE'
 export const INITIALIZE_TASK = 'INITIALIZE_TASK'
 export const UPDATE_TASK = 'UPDATE_TASK'
 export const VALIDATE_TASK = 'VALIDATE_TASK'
+
+export const SHOW_ALERT = 'SHOW_ALERT'
+export const HIDDEN_ALERT = 'HIDDEN_ALERT'
