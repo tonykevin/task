@@ -17,3 +17,10 @@ export const VALIDATE_TASK = 'VALIDATE_TASK'
 
 export const SHOW_ALERT = 'SHOW_ALERT'
 export const HIDDEN_ALERT = 'HIDDEN_ALERT'
+
+export const GET_USER = 'GET_USER'
+export const LOGIN_ERROR = 'LOGIN_ERROR'
+export const LOGIN_SUCCESSFUL = 'LOGIN_SUCCESSFUL'
+export const LOGOUT = 'LOGOUT'
+export const SIGNUP_ERROR = 'SIGNUP_ERROR'
+export const SIGNUP_SUCCESSFUL = 'SIGNUP_SUCCESSFUL'
