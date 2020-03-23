@@ -9,8 +9,8 @@ import {
   LOGIN_SUCCESSFUL,
   LOGOUT,
   SIGNUP_ERROR,
-  SIGNUP_SUCCESSFUL
-} from '../../types' 
+  SIGNUP_SUCCESS
+} from '../../types'
 
 const AuthState = props => {
   const initialState = {
@@ -26,14 +26,20 @@ const AuthState = props => {
   const signUp = async data => {
     try {
       const res = await axiosClient.post('/api/users', data)
-      console.log(res)
+
       dispatch({
-        type: SIGNUP_SUCCESSFUL
+        type: SIGNUP_SUCCESS,
+        payload: res.data
       })
     } catch (err) {
-      console.log(err)
+      const alert = {
+        category: 'alert-error',
+        msg: err.response.data.msg
+      }
+
       dispatch({
-        type: SIGNUP_ERROR
+        type: SIGNUP_ERROR,
+        payload: alert
       })
     }
   }

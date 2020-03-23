@@ -4,7 +4,7 @@ import {
   LOGIN_SUCCESSFUL,
   LOGOUT,
   SIGNUP_ERROR,
-  SIGNUP_SUCCESSFUL
+  SIGNUP_SUCCESS
 } from '../../types'
 
 export default (state, action) => {
@@ -16,7 +16,7 @@ export default (state, action) => {
         message: action.payload
       }
 
-    case SIGNUP_SUCCESSFUL:
+    case SIGNUP_SUCCESS:
       localStorage.setItem('token', action.payload.token)
       return {
         ...state,
