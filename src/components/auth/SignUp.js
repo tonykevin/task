@@ -1,12 +1,22 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { alertContext } from '../../context/alerts'
 import { authContext } from '../../context/auth'
 
-const SignUp = () => {
+const SignUp = (props) => {
   const { alert, showAlert } = useContext(alertContext)
-  const { signUp } = useContext(authContext)
+  const { authenticated, message, signUp } = useContext(authContext)
+
+  useEffect(() => {
+    if (authenticated) {
+      props.history.push('/proyectos')
+    }
+
+    if (message) {
+      showAlert(message.msg, message.category)
+    }
+  }, [authenticated, message, props.history])
 
   const [user, setUser] = useState({
     name: '',
