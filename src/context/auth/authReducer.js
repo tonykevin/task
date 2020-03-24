@@ -9,7 +9,14 @@ import {
 
 export default (state, action) => {
   switch (action.type) {
+    case GET_USER:
+      return {
+        ...state,
+        user: action.payload
+      }
+    case LOGIN_ERROR:
     case SIGNUP_ERROR:
+      localStorage.removeItem('token')
       return {
         ...state,
         token: null,
