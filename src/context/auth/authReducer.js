@@ -1,7 +1,7 @@
 import {
   GET_USER,
   LOGIN_ERROR,
-  LOGIN_SUCCESSFUL,
+  LOGIN_SUCCESS,
   LOGOUT,
   SIGNUP_ERROR,
   SIGNUP_SUCCESS
@@ -23,6 +23,7 @@ export default (state, action) => {
         message: action.payload
       }
 
+    case LOGIN_SUCCESS:
     case SIGNUP_SUCCESS:
       localStorage.setItem('token', action.payload.token)
       return {

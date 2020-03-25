@@ -7,7 +7,7 @@ import authToken from '../../config/authToken'
 import {
   GET_USER,
   LOGIN_ERROR,
-  LOGIN_SUCCESSFUL,
+  LOGIN_SUCCESS,
   LOGOUT,
   SIGNUP_ERROR,
   SIGNUP_SUCCESS
@@ -72,7 +72,13 @@ const AuthState = props => {
   const login = async data => {
     try {
       const res = await axiosClient.post('/api/auth', data)
-      console.log(res)
+
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: res.data
+      })
+
+      authenticatedUser()
     } catch (err) {
       const alert = {
         category: 'alert-error',
