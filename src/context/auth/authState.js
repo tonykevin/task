@@ -34,7 +34,7 @@ const AuthState = props => {
         payload: res.data
       })
 
-      authenticatedUser()
+      authenticateUser()
     } catch (err) {
       const alert = {
         category: 'alert-error',
@@ -48,7 +48,7 @@ const AuthState = props => {
     }
   }
   // Return authenticated user
-  const authenticatedUser = async () => {
+  const authenticateUser = async () => {
     const token = localStorage.getItem('token')
 
     if (token) {
@@ -78,7 +78,7 @@ const AuthState = props => {
         payload: res.data
       })
 
-      authenticatedUser()
+      authenticateUser()
     } catch (err) {
       const alert = {
         category: 'alert-error',
@@ -99,6 +99,7 @@ const AuthState = props => {
         message,
         token,
         user,
+        authenticateUser,
         login,
         signUp
       }}

@@ -7,6 +7,13 @@ import { ProjectState } from './context/projects'
 import { TaskState } from './context/tasks'
 import { AlertState } from './context/alerts'
 import { AuthState } from './context/auth'
+import authToken from './config/authToken'
+
+const token = localStorage.getItem('token')
+
+if (token) {
+  authToken(token)
+}
 
 function App () {
   return (
