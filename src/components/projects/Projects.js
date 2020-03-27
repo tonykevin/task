@@ -8,7 +8,7 @@ const Projects = () => {
 
   useEffect(() => {
     authenticateUser()
-  }, [authenticateUser])
+  }, [])
 
   return (
     <div className='container-app'>
