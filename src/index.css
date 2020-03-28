@@ -94,6 +94,10 @@ a {
   background-color: transparent;
 }
 
+.close-session {
+  color: var(--white);
+}
+
 .btn-remove {
   background-color: var(--white);
   color: var(--gray2);
@@ -196,8 +200,6 @@ aside  {
 .container-tasks {
   padding: 4rem;
 }
-
-
 
 .task-list {
   max-width: 600px;

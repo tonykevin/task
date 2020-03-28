@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from 'react'
 import { authContext } from '../../context/auth'
 
 const ProjectHeader = () => {
-  const { user, authenticateUser } = useContext(authContext)
+  const { user, authenticateUser, logout } = useContext(authContext)
 
   useEffect(() => {
     authenticateUser()
@@ -21,7 +21,12 @@ const ProjectHeader = () => {
           : null
       }
       <nav className='nav-main'>
-        <a href='#!'>Cerrar sesión</a>
+        <button
+          className='btn btn-blank close-session'
+          onClick={() => logout()}
+        >
+          Cerrar sesión
+        </button>
       </nav>
     </header>
   )
