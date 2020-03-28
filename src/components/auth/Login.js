@@ -16,7 +16,7 @@ const Login = (props) => {
     if (message) {
       showAlert(message.msg, message.category)
     }
-  }, [message, props.history])
+  }, [authenticated, message, props.history, showAlert])
 
   const [user, setUser] = useState({
     email: '',
