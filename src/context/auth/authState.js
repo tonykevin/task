@@ -16,13 +16,14 @@ import {
 const AuthState = props => {
   const initialState = {
     authenticated: null,
+    isLoading: true,
     message: null,
     token: localStorage.getItem('token'),
     user: null
   }
 
   const [state, dispatch] = useReducer(authReducer, initialState)
-  const { authenticated, message, token, user } = state
+  const { authenticated, isLoading, message, token, user } = state
 
   // Sign up an user
   const signUp = async data => {
@@ -103,6 +104,7 @@ const AuthState = props => {
     <authContext.Provider
       value={{
         authenticated,
+        isLoading,
         message,
         token,
         user,
