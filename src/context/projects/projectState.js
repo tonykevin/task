@@ -1,5 +1,4 @@
 import React, { useReducer } from 'react'
-import { v4 as uuidv4 } from 'uuid'
 
 import projectContext from './projectContext'
 import projectReducer from './projectReducer'
@@ -11,6 +10,7 @@ import {
   PROJECT_FORM,
   VALIDATE_FORM
 } from '../../types'
+import axiosClient from '../../config/axios'
 
 const ProjectState = props => {
   const projectsDB = [
@@ -46,12 +46,16 @@ const ProjectState = props => {
   }
 
   // Add new project
-  const addProject = (project) => {
-    project.id = uuidv4()
-    dispatch({
-      type: ADD_PROJECT,
-      payload: project
-    })
+  const addProject = async (project) => {
+    try {
+      const res = await axiosClient.post('/api/projects', project)
+      dispatch({
+        type: ADD_PROJECT,
+        payload: res.data
+      })
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   // validate form
