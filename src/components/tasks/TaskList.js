@@ -12,9 +12,9 @@ const TaskList = () => {
 
   // Delete a project
   const handleDelete = () => {
-    deleteProject(project.id)
-    deleteTaskByProject(project.id)
-    getTasks(project.id)
+    deleteProject(project._id)
+    deleteTaskByProject(project._id)
+    getTasks(project._id)
   }
 
   return (
