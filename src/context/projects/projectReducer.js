@@ -3,6 +3,7 @@ import {
   CURRENT_PROJECT,
   DELETE_PROJECT,
   GET_PROJECTS,
+  PROJECT_ERROR,
   PROJECT_FORM,
   VALIDATE_FORM
 } from '../../types'
@@ -16,6 +17,7 @@ export default (state, action) => {
         form: false,
         formError: false
       }
+
     case DELETE_PROJECT:
       return {
         ...state,
@@ -24,6 +26,7 @@ export default (state, action) => {
         ),
         project: null
       }
+
     case CURRENT_PROJECT:
       return {
         ...state,
@@ -31,10 +34,17 @@ export default (state, action) => {
           project => project._id === action.payload
         )[0]
       }
+
     case GET_PROJECTS:
       return {
         ...state,
         projects: action.payload
+      }
+
+    case PROJECT_ERROR:
+      return {
+        ...state,
+        message: action.payload
       }
 
     case PROJECT_FORM:

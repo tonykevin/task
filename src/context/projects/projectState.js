@@ -7,6 +7,7 @@ import {
   CURRENT_PROJECT,
   DELETE_PROJECT,
   GET_PROJECTS,
+  PROJECT_ERROR,
   PROJECT_FORM,
   VALIDATE_FORM
 } from '../../types'
@@ -16,13 +17,14 @@ const ProjectState = props => {
   const initialState = {
     form: false,
     formError: false,
+    message: null,
     projects: [],
     project: null
   }
 
   // Actions dispatch
   const [state, dispatch] = useReducer(projectReducer, initialState)
-  const { form, formError, projects, project } = state
+  const { form, formError, message, projects, project } = state
 
   // Functions for CRUD
   const showForm = () => {
@@ -41,7 +43,15 @@ const ProjectState = props => {
         payload: data.projects
       })
     } catch (err) {
-      console.log(err)
+      const alert = {
+        msg: 'Hubó un error',
+        category: 'alert-error'
+      }
+
+      dispatch({
+        type: PROJECT_ERROR,
+        payload: alert
+      })
     }
   }
 
@@ -54,7 +64,15 @@ const ProjectState = props => {
         payload: res.data
       })
     } catch (err) {
-      console.log(err)
+      const alert = {
+        msg: 'Hubó un error',
+        category: 'alert-error'
+      }
+
+      dispatch({
+        type: PROJECT_ERROR,
+        payload: alert
+      })
     }
   }
 
@@ -83,7 +101,15 @@ const ProjectState = props => {
         payload: projectId
       })
     } catch (err) {
-      console.log(err)
+      const alert = {
+        msg: 'Hubó un error',
+        category: 'alert-error'
+      }
+
+      dispatch({
+        type: PROJECT_ERROR,
+        payload: alert
+      })
     }
   }
 
@@ -92,6 +118,7 @@ const ProjectState = props => {
       value={{
         form,
         formError,
+        message,
         projects,
         project,
         addProject,
