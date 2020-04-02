@@ -7,6 +7,7 @@ const ProjectHeader = () => {
 
   useEffect(() => {
     authenticateUser()
+    // eslint-disable-next-line
   }, [])
 
   return (

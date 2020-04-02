@@ -16,6 +16,7 @@ const SignUp = (props) => {
     if (message) {
       showAlert(message.msg, message.category)
     }
+    // eslint-disable-next-line
   }, [authenticated, message, props.history])
 
   const [user, setUser] = useState({
