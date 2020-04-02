@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { projectContext } from '../../context/projects'
 import { taskContext } from '../../context/tasks'
 
-const Project = ({ id, name }) => {
+const Project = ({ _id, name }) => {
   const { currentProject } = useContext(projectContext)
   const { getTasks } = useContext(taskContext)
 
@@ -16,7 +16,7 @@ const Project = ({ id, name }) => {
       <button
         type='button'
         className='btn btn-blank'
-        onClick={() => selectProject(id)}
+        onClick={() => selectProject(_id)}
       >
         {name}
       </button>

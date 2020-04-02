@@ -20,14 +20,14 @@ const ProjectList = () => {
   return (
     <ul className='project-list'>
       <TransitionGroup>
-        {projects.map(({ id, name }) => (
+        {projects.map(({ _id, name }) => (
           <CSSTransition
-            key={id}
+            key={_id}
             timeout={200}
             classNames='project'
           >
             <Project
-              id={id}
+              _id={_id}
               name={name}
             />
           </CSSTransition>
