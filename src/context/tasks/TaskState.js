@@ -4,7 +4,7 @@ import taskContext from './taskContext'
 import TaskReducer from './TaskReducer'
 
 import {
-  ADD_TASK,
+  CREATE_TASK,
   CURRENT_TASK,
   DELETE_TASK,
   DELETE_TASK_BY_PROJECT,
@@ -14,29 +14,17 @@ import {
   UPDATE_TASK,
   VALIDATE_TASK
 } from '../../types'
+import axiosCliente from '../../config/axios'
 
 const TaskState = props => {
   const initialState = {
-    tasks: [
-      { id: 0, name: 'Elegir colores', state: false, projectId: 2 },
-      { id: 1, name: 'Elegir plataforma de pago', state: false, projectId: 3 },
-      { id: 2, name: 'Elegir Hosting', state: true, projectId: 2 },
-      { id: 3, name: 'Elegir plataforma de pago', state: true, projectId: 2 },
-      { id: 4, name: 'Elegir colores', state: false, projectId: 3 },
-      { id: 5, name: 'Elegir Hosting', state: true, projectId: 1 },
-      { id: 6, name: 'Comprar dominio', state: false, projectId: 3 },
-      { id: 7, name: 'Comprar dominio', state: true, projectId: 1 },
-      { id: 8, name: 'Diseñar logo', state: true, projectId: 2 },
-      { id: 9, name: 'Diseñar logo', state: false, projectId: 3 },
-      { id: 10, name: 'Eligir gestor de DB', state: false, projectId: 3 }
-    ],
     currentTask: null,
-    projectTasks: null,
-    taskError: false
+    taskError: false,
+    tasks: []
   }
 
   const [state, dispatch] = useReducer(TaskReducer, initialState)
-  const { currentTask, projectTasks, tasks, taskError } = state
+  const { currentTask, tasks, taskError } = state
 
   // Create functions
 
@@ -49,11 +37,17 @@ const TaskState = props => {
   }
 
   // Add a task to project
-  const addTask = task => {
-    dispatch({
-      type: ADD_TASK,
-      payload: task
-    })
+  const createTask = async task => {
+    try {
+      const res = await axiosCliente.post('/api/tasks', task)
+
+      dispatch({
+        type: CREATE_TASK,
+        payload: res.data.task
+      })
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   // Validate a task
@@ -114,10 +108,9 @@ const TaskState = props => {
     <taskContext.Provider
       value={{
         currentTask,
-        projectTasks,
         tasks,
         taskError,
-        addTask,
+         createTask,
         ChangeTaskState,
         deleteTask,
         deleteTaskByProject,

@@ -7,7 +7,7 @@ import Task from './Task'
 
 const TaskList = () => {
   const { project, deleteProject } = useContext(projectContext)
-  const { getTasks, projectTasks, deleteTaskByProject } = useContext(taskContext)
+  const { tasks, getTasks, deleteTaskByProject } = useContext(taskContext)
   if (!project) { return <h2>Selecciona un proyecto</h2> }
 
   // Delete a project
@@ -22,16 +22,16 @@ const TaskList = () => {
       <h2>Proyecto: {project.name}</h2>
       <ul className='task-list'>
         {
-          projectTasks.length === 0
+          tasks.length === 0
             ? (
               <li className='task'><p>No hay tareas</p></li>
             )
             : (
               <TransitionGroup>
                 {
-                  projectTasks.map(task => (
+                  tasks.map(task => (
                     <CSSTransition
-                      key={task.id}
+                      key={task._id}
                       timeout={200}
                       classNames='task'
                     >

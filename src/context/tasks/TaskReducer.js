@@ -1,5 +1,5 @@
 import {
-  ADD_TASK,
+  CREATE_TASK,
   CURRENT_TASK,
   DELETE_TASK,
   DELETE_TASK_BY_PROJECT,
@@ -12,7 +12,7 @@ import {
 
 export default (state, action) => {
   switch (action.type) {
-    case ADD_TASK:
+    case CREATE_TASK:
       return {
         ...state,
         taskError: false,

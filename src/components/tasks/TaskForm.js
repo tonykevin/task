@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { v4 as uuidv4 } from 'uuid'
 
 import { projectContext } from '../../context/projects'
 import { taskContext } from '../../context/tasks'
@@ -7,7 +6,7 @@ import { taskContext } from '../../context/tasks'
 const TaskForm = () => {
   const { project } = useContext(projectContext)
   const {
-    addTask,
+    createTask,
     currentTask,
     getTasks,
     initializeTask,
@@ -51,10 +50,8 @@ const TaskForm = () => {
 
     if (!currentTask) {
       // Add a task
-      task.id = uuidv4()
-      task.projectId = project.id
-      task.state = false
-      addTask(task)
+      task._projectId = project._id
+      createTask(task)
     } else {
       // Update a task
       updateTask(task)
