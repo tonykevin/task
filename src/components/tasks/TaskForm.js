@@ -61,7 +61,7 @@ const TaskForm = () => {
     }
 
     // Get and filter current project tasks
-    getTasks(project.id)
+    getTasks(project._id)
 
     // Reset form
     setTask({

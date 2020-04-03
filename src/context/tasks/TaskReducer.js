@@ -4,7 +4,7 @@ import {
   DELETE_TASK,
   DELETE_TASK_BY_PROJECT,
   INITIALIZE_TASK,
-  PROJECT_TASKS,
+  GET_TASKS,
   TASK_STATE,
   UPDATE_TASK,
   VALIDATE_TASK
@@ -15,8 +15,7 @@ export default (state, action) => {
     case CREATE_TASK:
       return {
         ...state,
-        taskError: false,
-        tasks: [action.payload, ...state.tasks]
+        taskError: false
       }
     case CURRENT_TASK:
       return {
@@ -44,12 +43,10 @@ export default (state, action) => {
         currentTask: null
       }
 
-    case PROJECT_TASKS:
+    case GET_TASKS:
       return {
         ...state,
-        projectTasks: state.tasks.filter(
-          task => task.projectId === action.payload
-        )
+        tasks: action.payload
       }
 
     case TASK_STATE:

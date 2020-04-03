@@ -9,12 +9,12 @@ import {
   DELETE_TASK,
   DELETE_TASK_BY_PROJECT,
   INITIALIZE_TASK,
-  PROJECT_TASKS,
+  GET_TASKS,
   TASK_STATE,
   UPDATE_TASK,
   VALIDATE_TASK
 } from '../../types'
-import axiosCliente from '../../config/axios'
+import axiosClient from '../../config/axios'
 
 const TaskState = props => {
   const initialState = {
@@ -29,21 +29,26 @@ const TaskState = props => {
   // Create functions
 
   // Get project tasks
-  const getTasks = projectId => {
-    dispatch({
-      type: PROJECT_TASKS,
-      payload: projectId
-    })
+  const getTasks = async project => {
+    try {
+      const res = await axiosClient.get('/api/tasks', { params: { project } })
+
+      dispatch({
+        type: GET_TASKS,
+        payload: res.data.tasks
+      })
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   // Add a task to project
   const createTask = async task => {
     try {
-      const res = await axiosCliente.post('/api/tasks', task)
+      await axiosClient.post('/api/tasks', task)
 
       dispatch({
-        type: CREATE_TASK,
-        payload: res.data.task
+        type: CREATE_TASK
       })
     } catch (err) {
       console.log(err)
