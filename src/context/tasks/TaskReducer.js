@@ -26,7 +26,7 @@ export default (state, action) => {
       return {
         ...state,
         tasks: state.tasks.filter(
-          task => task.id !== action.payload
+          task => task._id !== action.payload
         )
       }
     case DELETE_TASK_BY_PROJECT:
