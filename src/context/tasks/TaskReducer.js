@@ -15,7 +15,8 @@ export default (state, action) => {
     case CREATE_TASK:
       return {
         ...state,
-        taskError: false
+        taskError: false,
+        tasks: [action.payload, ...state.tasks]
       }
     case CURRENT_TASK:
       return {

@@ -8,7 +8,6 @@ const TaskForm = () => {
   const {
     createTask,
     currentTask,
-    getTasks,
     initializeTask,
     taskError,
     updateTask,
@@ -59,9 +58,6 @@ const TaskForm = () => {
       // Clean the form
       initializeTask()
     }
-
-    // Get and filter current project tasks
-    getTasks(project._id)
 
     // Reset form
     setTask({

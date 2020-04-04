@@ -45,10 +45,12 @@ const TaskState = props => {
   // Add a task to project
   const createTask = async task => {
     try {
-      await axiosClient.post('/api/tasks', task)
+      const res = await axiosClient.post('/api/tasks', task)
 
       dispatch({
-        type: CREATE_TASK
+        type: CREATE_TASK,
+        payload: res.data.task
+
       })
     } catch (err) {
       console.log(err)
