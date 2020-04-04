@@ -3,7 +3,7 @@ import { taskContext } from '../../context/tasks'
 import { projectContext } from '../../context/projects'
 
 const Task = ({ task }) => {
-  const { deleteTask, getCurrentTask, getTasks, ChangeTaskState } = useContext(taskContext)
+  const { deleteTask, getCurrentTask, getTasks, updateTask } = useContext(taskContext)
   const { project } = useContext(projectContext)
 
   const { _id, name, state } = task
@@ -24,7 +24,7 @@ const Task = ({ task }) => {
       task.state = true
     }
 
-    ChangeTaskState(task)
+    updateTask(task)
   }
 
   return (

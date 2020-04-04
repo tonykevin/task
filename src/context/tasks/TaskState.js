@@ -10,7 +10,6 @@ import {
   DELETE_TASK_BY_PROJECT,
   INITIALIZE_TASK,
   GET_TASKS,
-  TASK_STATE,
   UPDATE_TASK,
   VALIDATE_TASK
 } from '../../types'
@@ -86,14 +85,6 @@ const TaskState = props => {
     })
   }
 
-  // Change task state
-  const ChangeTaskState = task => {
-    dispatch({
-      type: TASK_STATE,
-      payload: task
-    })
-  }
-
   // Get current task
   const getCurrentTask = task => {
     dispatch({
@@ -103,11 +94,17 @@ const TaskState = props => {
   }
 
   // Update a task
-  const updateTask = task => {
-    dispatch({
-      type: UPDATE_TASK,
-      payload: task
-    })
+  const updateTask = async task => {
+    try {
+      await axiosClient.put(`/api/tasks/${task._id}`, task)
+
+      dispatch({
+        type: UPDATE_TASK,
+        payload: task
+      })
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   // Initialize task
@@ -123,8 +120,7 @@ const TaskState = props => {
         currentTask,
         tasks,
         taskError,
-         createTask,
-        ChangeTaskState,
+        createTask,
         deleteTask,
         deleteTaskByProject,
         getCurrentTask,

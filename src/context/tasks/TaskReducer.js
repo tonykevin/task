@@ -5,7 +5,6 @@ import {
   DELETE_TASK_BY_PROJECT,
   INITIALIZE_TASK,
   GET_TASKS,
-  TASK_STATE,
   UPDATE_TASK,
   VALIDATE_TASK
 } from '../../types'
@@ -50,12 +49,11 @@ export default (state, action) => {
         tasks: action.payload
       }
 
-    case TASK_STATE:
     case UPDATE_TASK:
       return {
         ...state,
         tasks: state.tasks.map(
-          task => task.id === action.payload.id
+          task => task._id === action.payload._id
             ? action.payload
             : task
         )
