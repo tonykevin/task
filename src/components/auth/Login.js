@@ -51,10 +51,11 @@ const Login = (props) => {
       ) : null}
       <div className="container-form shadow--dark">
         <h1 data-cy="loginTitle">Iniciar sesión</h1>
-        <form onSubmit={onSubmit}>
+        <form data-cy="loginForm" onSubmit={onSubmit}>
           <div className="form-field">
             <label htmlFor="email">Correo</label>
             <input
+              data-cy="emailInput"
               id="email"
               name="email"
               onChange={defineData}
@@ -66,6 +67,7 @@ const Login = (props) => {
           <div className="form-field">
             <label htmlFor="password">Contraseña</label>
             <input
+              data-cy="passwordInput"
               id="password"
               name="password"
               onChange={defineData}
@@ -75,12 +77,16 @@ const Login = (props) => {
             />
           </div>
           <div className="form-field">
-            <button className="btn btn-primary btn-block" type="submit">
+            <button
+              className="btn btn-primary btn-block"
+              data-cy="submitLogin"
+              type="submit"
+            >
               Iniciar sesión
             </button>
           </div>
         </form>
-        <Link to="/registrarse" className="link-account">
+        <Link data-cy="signUpLink" to="/registrarse" className="link-account">
           registrarse
         </Link>
       </div>
