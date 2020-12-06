@@ -82,13 +82,15 @@ const SignUp = (props) => {
           : null
       }
       <div className='container-form shadow--dark'>
-        <h1>Crear una cuenta</h1>
+        <h1 data-cy='signUpTitle'>Crear una cuenta</h1>
         <form
+          data-cy='signUpForm'
           onSubmit={onSubmit}
         >
           <div className='form-field'>
             <label htmlFor='name'>Nombre</label>
             <input
+              data-cy='nameInput'
               id='name'
               name='name'
               onChange={defineData}
@@ -101,6 +103,7 @@ const SignUp = (props) => {
           <div className='form-field'>
             <label htmlFor='email'>Correo</label>
             <input
+              data-cy='emailInput'
               id='email'
               name='email'
               onChange={defineData}
@@ -112,6 +115,7 @@ const SignUp = (props) => {
           <div className='form-field'>
             <label htmlFor='password'>Contraseña</label>
             <input
+              data-cy='passwordInput'
               id='password'
               name='password'
               onChange={defineData}
@@ -123,6 +127,7 @@ const SignUp = (props) => {
           <div className='form-field'>
             <label htmlFor='confirm'>Confirmar contraseña</label>
             <input
+              data-cy='confirmInput'
               id='confirm'
               name='confirm'
               onChange={defineData}
@@ -133,6 +138,7 @@ const SignUp = (props) => {
           </div>
           <div className='form-field'>
             <button
+              data-cy='submitSignUp'
               className='btn btn-primary btn-block'
               type='submit'
             >
@@ -140,7 +146,7 @@ const SignUp = (props) => {
             </button>
           </div>
         </form>
-        <Link to='/' className='link-account'>
+        <Link data-cy='signInLink' to='/' className='link-account'>
           Volver a iniciar sesión
         </Link>
       </div>

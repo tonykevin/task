@@ -29,4 +29,37 @@ describe("<Form />", () => {
       .should("have.attr", "href")
       .should("eq", "/registrarse");
   });
+
+  it('<SignUp /> - Verify sign up page', () => {
+    cy.visit('/registrarse')
+
+    cy.get('[data-cy=signUpTitle]')
+      .should('exist')
+      .invoke('text')
+      .should('equal', 'Crear una cuenta')
+
+    cy.get('[data-cy=signUpForm]').should('exist')
+
+    cy.get('[data-cy=nameInput]').should('exist')
+    cy.get('[data-cy=emailInput]').should('exist')
+    cy.get('[data-cy=passwordInput]')
+      .should('exist')
+      .should('have.prop', 'type')
+      .should('equal', 'password')
+    cy.get('[data-cy=confirmInput]').should('exist')
+
+    cy.get('[data-cy=submitSignUp]')
+      .should('exist')
+      .should('have.class', 'btn-primary')
+      .invoke('text')
+      .should('equal', 'Registrarme')
+      .should('not.equal', 'Crear cuenta')
+
+    cy.get('[data-cy=signInLink]')
+      .should('exist')
+      .should('have.attr', 'href')
+      .should('eq', '/')
+
+    cy.visit('/')
+  })
 });
