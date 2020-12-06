@@ -75,6 +75,7 @@ const SignUp = (props) => {
           ? (
             <div
               className={`alert ${alert.category}`}
+              data-cy='alert'
             >
               {alert.msg}
             </div>

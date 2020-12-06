@@ -24,6 +24,7 @@ const ProjectHeader = () => {
       <nav className='nav-main'>
         <button
           className='btn btn-blank close-session'
+          data-cy='logout'
           onClick={() => logout()}
         >
           Cerrar sesión

@@ -8,7 +8,7 @@ import Task from './Task'
 const TaskList = () => {
   const { project, deleteProject } = useContext(projectContext)
   const { tasks, getTasks, deleteTaskByProject } = useContext(taskContext)
-  if (!project) { return <h2>Selecciona un proyecto</h2> }
+  if (!project) { return <h2 data-cy='taskListTitle'>Selecciona un proyecto</h2> }
 
   // Delete a project
   const handleDelete = () => {
